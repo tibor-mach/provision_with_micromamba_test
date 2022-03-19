@@ -1,0 +1,11 @@
+name: testenv
+dependencies:
+  - python=3.9
+  - pandas=1.2.4
+  - conda-forge::scikit-learn=1.0
+  - conda-forge::dvc-gs
+  - pip
+  - pip:
+      - numpy==1.20.03
+      - scipy==1.8.0
+

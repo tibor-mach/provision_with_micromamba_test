@@ -1,0 +1,21 @@
+name: Pull requests
+on: pull_request
+
+jobs:
+
+  install_conda:
+    runs-on: ubuntu-18.04
+    # the workflow runs correctly when not in the container
+    container: ghcr.io/iterative/cml:0-dvc2-base1
+    defaults:
+      run:
+        shell: bash -l {0}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: install conda environment with micromamba
+        uses: mamba-org/provision-with-micromamba@main
+        with:
+            environment-file: testenv.yml
+            cache-env: true
